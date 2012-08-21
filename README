@@ -1,0 +1,5 @@
+Este proyecto permite la generación de código, de manera automática, en aplicaciones Spring MVC.
+
+Actualmente se hace el scaffolding a partir de una clase del modelo de dominio, que se indica en el código:
+
+def inputFile = new File("/Users/yeray/Documents/workspaces/workspace-sts/Spike/src/net/avantic/spike/User.java")
