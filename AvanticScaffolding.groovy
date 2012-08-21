@@ -265,7 +265,7 @@ Show view
 
 }
 
-def inputFile = new File("/Users/yeray/Documents/workspaces/workspace-sts/Spike/src/net/avantic/spike/User.java")
+def inputFile = new File(this.args[0])
 
 def classLoader = new GroovyClassLoader()
 
