@@ -6,14 +6,17 @@ class PropertiesFileBuilder extends AbstractFileBuilder {
 
 	def clazz
 
-	def projectConfiguration
+	def config
 
 	def build() {
-		buildPropertiesFile("${projectConfiguration.generatedRootFolder}", "${clazz.simpleName}", writeLabelsCode, clazz)
+		createFile(
+			"${config.generationFolder}",
+			"${config.className}.properties",
+			writeLabelsCode)
 	}
 
 	def writeLabelsCode = {file -> 
-		def template = new PropertiesTemplate(clazz : clazz)
+		def template = new PropertiesTemplate(clazz: clazz, config: config)
 		file.write template.build()
 	}
 

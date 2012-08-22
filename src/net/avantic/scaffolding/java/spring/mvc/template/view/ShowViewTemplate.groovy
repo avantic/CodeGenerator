@@ -1,4 +1,4 @@
-package net.avantic.scaffolding.java.spring.mvc.template
+package net.avantic.scaffolding.java.spring.mvc.template.view
 
 import java.beans.Introspector
 
