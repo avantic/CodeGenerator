@@ -1,3 +1,5 @@
+AVISO: Este proyecto es para la utilización privada de Avantic, su uso en cualquier otro proyecto puede tener consecuencias inesperadas.
+
 Este proyecto permite la generación de código, de manera automática, en aplicaciones Spring MVC.
 
 Actualmente se hace el scaffolding a partir de una clase del modelo de dominio (por ejemplo):
