@@ -83,6 +83,7 @@ public class Create${config.className}Controller extends AbstractCommandControll
 	protected Map<String, Object> getReferenceData(Long id, HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
+		model.put(\"${config.beanName}\", FIXME)
 		FIX_MODEL_CONTENT
 		
 		return model;

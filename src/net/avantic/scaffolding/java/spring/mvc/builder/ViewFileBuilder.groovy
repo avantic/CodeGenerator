@@ -22,7 +22,7 @@ class ViewFileBuilder extends AbstractFileBuilder {
 		createFile(
 			"${config.generationFolder}/views/${config.beanName}", 
 			"create${config.className}.jsp", 
-			writeShowViewCode)
+			writeCreateViewCode)
 	}
 
 	def writeListViewCode = {file -> 
@@ -31,12 +31,12 @@ class ViewFileBuilder extends AbstractFileBuilder {
 	}
 
 	def writeShowViewCode = {file -> 
-		def template = new ShowViewTemplate(clazz : clazz, projectConfiguration : config)
+		def template = new ShowViewTemplate(clazz : clazz, config : config)
 		file.write template.build()
 	}
 	
 	def writeCreateViewCode = {file -> 
-		def template = new CreateViewTemplate(clazz : clazz, projectConfiguration : config)
+		def template = new CreateViewTemplate(clazz : clazz, config : config)
 		file.write template.build()
 	}
 

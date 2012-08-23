@@ -6,11 +6,51 @@ class ShowViewTemplate {
 	
 	def clazz
 
-	def projectConfiguration
+	def config
+
+	def buildFields() {
+		def output = ""
+		clazz.declaredFields.findAll{!it.synthetic}.each { field ->
+			output += """
+					<div class=\"control-group\">
+						<label><spring:message code=\"${config.beanName}.${field.name}\"/></label>
+						<div class=\"controls\">
+							<span class=\"input-xlarge field-output\">\${${config.beanName}.${field.name}}</span>
+						</div>
+					</div>
+			"""
+		}
+		output
+	}
 
 	def build() {
 """
-Show view
+<%@ page contentType=\"text/html; charset=UTF-8\" %>
+
+<%@ include file=\"/WEB-INF/views/includes/includes.jsp\" %>
+
+<tiles:insertTemplate template=\"/WEB-INF/views/layouts/FIXME.jsp\">
+
+	<tiles:putAttribute name=\"FIXME\" cascade=\"true\">
+		<script type=\"text/javascript\" charset=\"utf-8\">
+			\$(document).ready(function() {
+				deseleccionarElementosNavList();
+				deseleccionarElementosMenu();
+				\$(\"FIXME\").addClass(\"active\");
+			});
+			
+		</script>
+	
+		<div class=\"well\">
+			<fieldset>
+				<legend><spring:message code=\"${config.beanName}.detalle.title\"/></legend>
+				<div class=\"form-horizontal\">
+					${buildFields()}
+				</div> <!-- /form-vertical -->
+			</fieldset>
+		</div><!--/well-->
+	</tiles:putAttribute>
+</tiles:insertTemplate>
 """
 	}
 

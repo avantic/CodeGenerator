@@ -10,10 +10,13 @@ class PropertiesTemplate {
 		def output = ""
 
 		output += "${config.beanName}.list.title=${config.beanName}\n"
+		output += "${config.beanName}.detalle.title=${config.beanName}\n"
 		clazz.declaredFields.findAll{!it.synthetic}.each { field ->
+			output += "${config.beanName}.${field.name}=${field.name}\n"
 			output += "${config.beanName}.list.${field.name}=${field.name}\n"
 			output += "${config.beanName}.list.${field.name}.title=${field.name}\n"
 		}
+		output += "create${config.className}.title=FIXME\n"
 		output += "create${config.className}.success.message=FIX_SUCCESS_MESSAGE\n"
 
 		output
