@@ -17,6 +17,11 @@ import org.springframework.security.access.annotation.Secured;
 
 public interface List${config.className}sFacade {
 
+	/*
+	 * This is a generated file, please check for the next items:
+	 * FIX_ROLES
+	 */
+	 
 	@Secured({\"FIX_ROLES\"})
 	List<${config.className}> list();
 

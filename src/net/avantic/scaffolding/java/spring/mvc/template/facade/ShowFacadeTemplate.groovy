@@ -15,6 +15,11 @@ import org.springframework.security.access.annotation.Secured;
 
 public interface Show${config.className}Facade {
 
+	/*
+	 * This is a generated file, please check for the next items:
+	 * FIX_ROLES
+	 */
+	 
 	@Secured({\"FIXME\"})
 	${config.className} get(Long id${config.className});
 

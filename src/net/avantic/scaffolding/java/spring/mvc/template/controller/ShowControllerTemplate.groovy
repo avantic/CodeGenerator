@@ -26,7 +26,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class Show${config.className}Controller {
 
-	protected static final String VIEW_NAME = \"/${config.beanName}/show${config.className}\";
+	/*
+	 * This is a generated file, please check for the next items:
+	 * FIX_VIEW_NAME
+	 */
+
+	protected static final String FIX_VIEW_NAME = \"/${config.beanName}/show${config.className}\";
 
 	@Autowired
 	protected ContextModelFacade ${config.beanName}ContextModelFacade;
@@ -40,7 +45,7 @@ public class Show${config.className}Controller {
 		Map<String, Object> model = ${config.beanName}ContextModelFacade.getContextByIdDomain(id${config.className});
 		model.put(\"${config.beanName}\", show${config.className}Facade.get(id${config.className}));
 		
-		return new ModelAndView(VIEW_NAME, model);
+		return new ModelAndView(FIX_VIEW_NAME, model);
 	}
 
 }

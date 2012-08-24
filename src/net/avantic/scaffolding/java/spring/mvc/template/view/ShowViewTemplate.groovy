@@ -31,7 +31,7 @@ class ShowViewTemplate {
 
 <tiles:insertTemplate template=\"/WEB-INF/views/layouts/FIXME.jsp\">
 
-	<tiles:putAttribute name=\"FIXME\" cascade=\"true\">
+	<tiles:putAttribute name=\"ficha-content\" cascade=\"true\">
 		<script type=\"text/javascript\" charset=\"utf-8\">
 			\$(document).ready(function() {
 				deseleccionarElementosNavList();

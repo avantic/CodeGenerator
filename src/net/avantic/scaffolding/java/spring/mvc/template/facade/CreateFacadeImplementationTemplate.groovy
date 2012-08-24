@@ -38,7 +38,7 @@ public class Create${config.className}FacadeImpl extends CommandFacadeWithSyntac
 
 	@Override
 	public SimpleFacadeResult txValidateAndExecute(Create${config.className}Request command) throws FacadeException {
-		super.txValidateAndExecute(command);
+		return super.txValidateAndExecute(command);
 	}
 	
 	@Override

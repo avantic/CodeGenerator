@@ -19,6 +19,11 @@ import ${config.basePackage}.web.model.Create${config.className}Request;
 import org.springframework.security.access.annotation.Secured;
 
 public interface Create${config.className}Facade extends CommandFacade<Create${config.className}Request, SimpleFacadeResult> {
+
+	/*
+	 * This is a generated file, please check for the next items:
+	 * FIX_ROLES
+	 */
 	
 	@Secured({\"FIX_ROLES\"})
 	@Override
