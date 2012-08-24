@@ -1,6 +1,6 @@
 package net.avantic.scaffolding.java.spring.mvc.builder
 
-import net.avantic.scaffolding.java.spring.mvc.template.command.CreateCommandTemplate
+import net.avantic.scaffolding.java.spring.mvc.template.TemplateFactory
 
 class CommandFileBuilder extends AbstractFileBuilder {
 
@@ -16,7 +16,7 @@ class CommandFileBuilder extends AbstractFileBuilder {
 	}
 
 	def writeCreateCommandCode = {file -> 
-		def template = new CreateCommandTemplate(clazz : clazz, config : config)
+		def template = TemplateFactory.getCreateCommandTemplate(clazz, config)
 		file.write template.build()
 	}
 

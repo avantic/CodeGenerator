@@ -6,9 +6,11 @@ class ListViewTemplate {
 
 	def config
 
+	def fieldAnalyzer
+
 	def buildTableHeaders() {
 		def output = ""
-		clazz.declaredFields.findAll{!it.synthetic}.each { field ->
+		clazz.declaredFields.findAll{fieldAnalyzer.isNotSynthetic(it)}.each { field ->
 			output += """
 			<th title=\"<spring:message code=\"${config.beanName}.list.${field.name}.title\"/>\">
 				<a href=\"#\"><spring:message code=\"${config.beanName}.list.${field.name}\"/></a>

@@ -1,8 +1,6 @@
 package net.avantic.scaffolding.java.spring.mvc.builder
 
-import net.avantic.scaffolding.java.spring.mvc.template.controller.CreateControllerTemplate
-import net.avantic.scaffolding.java.spring.mvc.template.controller.ListControllerTemplate
-import net.avantic.scaffolding.java.spring.mvc.template.controller.ShowControllerTemplate
+import net.avantic.scaffolding.java.spring.mvc.template.TemplateFactory
 
 class ControllerFileBuilder extends AbstractFileBuilder {
 
@@ -26,17 +24,17 @@ class ControllerFileBuilder extends AbstractFileBuilder {
 	}
 
 	def writeCreateControllerCode = {file -> 
-		def template = new CreateControllerTemplate(clazz : clazz, config : config)
+		def template = TemplateFactory.getCreateControllerTemplate(clazz, config)
 		file.write template.build()
 	}
 
 	def writeListControllerCode = {file -> 
-		def template = new ListControllerTemplate(clazz : clazz, config : config)
+		def template = TemplateFactory.getListControllerTemplate(clazz, config)
 		file.write template.build()
 	}
 
 	def writeShowControllerCode = {file -> 
-		def template = new ShowControllerTemplate(clazz : clazz, config : config)
+		def template = TemplateFactory.getShowControllerTemplate(clazz, config)
 		file.write template.build()
 	}
 

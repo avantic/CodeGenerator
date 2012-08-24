@@ -6,18 +6,14 @@ class CreateCommandTemplate {
 
 	def config
 
-	def foo(field) {
-		!field.synthetic && field.name != "serialVersionUID"
-	}
+	def fieldAnalyzer
 
-	def buildFields() {
-		def output = ""
-		clazz.declaredFields.findAll{foo(it)}.each { field ->
-			output += """
-	private ${field.type.simpleName} ${field.name};
-			"""
+	def originalClassNotSyntheticFields() {
+		def output = new StringBuffer()
+		clazz.declaredFields.findAll{fieldAnalyzer.isNotSynthetic(it)}.each { field ->
+			output << "private ${field.type.simpleName} ${field.name};\n\n\t"
 		}
-		output
+		output.toString()
 	}
 
 	def build() {
@@ -30,7 +26,7 @@ public class Create${config.className}Request implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	${buildFields()}
+	${originalClassNotSyntheticFields()}
 
 	// FIXME don't forget generate getters, setters and toString methods
 

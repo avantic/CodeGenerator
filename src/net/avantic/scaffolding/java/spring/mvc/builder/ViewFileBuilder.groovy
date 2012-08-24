@@ -1,8 +1,6 @@
 package net.avantic.scaffolding.java.spring.mvc.builder
 
-import net.avantic.scaffolding.java.spring.mvc.template.view.ListViewTemplate
-import net.avantic.scaffolding.java.spring.mvc.template.view.ShowViewTemplate
-import net.avantic.scaffolding.java.spring.mvc.template.view.CreateViewTemplate
+import net.avantic.scaffolding.java.spring.mvc.template.TemplateFactory
 
 class ViewFileBuilder extends AbstractFileBuilder {
 
@@ -26,17 +24,17 @@ class ViewFileBuilder extends AbstractFileBuilder {
 	}
 
 	def writeListViewCode = {file -> 
-		def template = new ListViewTemplate(clazz : clazz, config : config)
+		def template = TemplateFactory.getListViewTemplate(clazz, config)
 		file.write template.build()
 	}
 
 	def writeShowViewCode = {file -> 
-		def template = new ShowViewTemplate(clazz : clazz, config : config)
+		def template = TemplateFactory.getShowViewTemplate(clazz, config)
 		file.write template.build()
 	}
 	
 	def writeCreateViewCode = {file -> 
-		def template = new CreateViewTemplate(clazz : clazz, config : config)
+		def template = TemplateFactory.getCreateViewTemplate(clazz, config)
 		file.write template.build()
 	}
 

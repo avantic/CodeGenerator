@@ -8,9 +8,11 @@ class ShowViewTemplate {
 
 	def config
 
+	def fieldAnalyzer
+
 	def buildFields() {
 		def output = ""
-		clazz.declaredFields.findAll{!it.synthetic}.each { field ->
+		clazz.declaredFields.findAll{fieldAnalyzer.isNotSynthetic(it)}.each { field ->
 			output += """
 					<div class=\"control-group\">
 						<label><spring:message code=\"${config.beanName}.${field.name}\"/></label>

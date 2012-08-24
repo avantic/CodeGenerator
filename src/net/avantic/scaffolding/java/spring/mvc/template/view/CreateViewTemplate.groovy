@@ -8,9 +8,11 @@ class CreateViewTemplate {
 
 	def config
 
+	def fieldAnalyzer
+
 	def buildFields() {
 		def output = "";
-		clazz.declaredFields.findAll{!it.synthetic}.each { field ->
+		clazz.declaredFields.findAll{fieldAnalyzer.isNotSynthetic(it)}.each { field ->
 			if (field.type.name == "org.joda.time.DateTime") {
 				output += """
 					<div class=\"control-group\">
