@@ -12,6 +12,8 @@ package ${config.basePackage}.facade.${config.beanName}.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import ${config.basePackage}.commandCopier.CommandCopier;
 import ${config.basePackage}.dao.${config.className}DAO;
 import ${config.basePackage}.facade.FacadeException;
@@ -24,17 +26,19 @@ import ${config.basePackage}.validators.AlwaysTrueDomainValidator;
 import ${config.basePackage}.validators.DomainValidator;
 import ${config.basePackage}.validators.ValidatorResult;
 import ${config.basePackage}.web.model.Create${config.className}Request;
+import org.springframework.stereotype.Component;
 
+@Component(\"create${config.className}Facade\")
 public class Create${config.className}FacadeImpl extends CommandFacadeWithSyntacticValidation<Create${config.className}Request, SimpleFacadeResult> 
 		implements Create${config.className}Facade {
 	
-	protected ${config.className}DAO ${config.beanName}DAO;
+	@Autowired protected ${config.className}DAO ${config.beanName}DAO;
 	
-	protected DomainValidator<${config.className}, Object> semanticValidator;
+	@Autowired protected DomainValidator<${config.className}, Object> create${config.className}SemanticValidator;
 
-	protected CommandCopier<Create${config.className}Request, Object, ${config.className}> commandCopier;
+	@Autowired protected CommandCopier<Create${config.className}Request, Object, ${config.className}> create${config.className}CommandCopier;
 
-	protected DomainValidator<Object, Object> executionValidator;
+	@Autowired protected DomainValidator<Object, Object> create${config.className}ExecutionValidator;
 
 	@Override
 	public SimpleFacadeResult txValidateAndExecute(Create${config.className}Request command) throws FacadeException {
@@ -48,12 +52,12 @@ public class Create${config.className}FacadeImpl extends CommandFacadeWithSyntac
 
 	@Override
 	public ValidatorResult getExecutionValidatorResult(Long id) {
-		return executionValidator.getValidatorResult(target, context);
+		return create${config.className}ExecutionValidator.getValidatorResult(target, context);
 	}
 
 	@Override
 	public Create${config.className}Request newCommand(Long id) {
-		return commandCopier.getCommandFromObject(FIXME);
+		return create${config.className}CommandCopier.getCommandFromObject(FIXME);
 	}
 
 	@Override
@@ -64,8 +68,8 @@ public class Create${config.className}FacadeImpl extends CommandFacadeWithSyntac
 	@Override
 	protected ValidatorResult internalSemanticValidation(Create${config.className}Request command) {
 		${config.className} ${config.beanName} = new ${config.className}();
-		commandCopier.copyCommandToObject(command, ${config.beanName});
-		return semanticValidator.getValidatorResult(${config.beanName}, null);
+		create${config.className}CommandCopier.copyCommandToObject(command, ${config.beanName});
+		return create${config.className}SemanticValidator.getValidatorResult(${config.beanName}, null);
 	}
 
 	@Override
@@ -74,7 +78,7 @@ public class Create${config.className}FacadeImpl extends CommandFacadeWithSyntac
 
 		/*
 		${config.className} ${config.beanName} = new ${config.className}();
-		commandCopier.copyCommandToObject(command, ${config.beanName});
+		create${config.className}CommandCopier.copyCommandToObject(command, ${config.beanName});
 		
 		${config.beanName}DAO.saveOrUpdate(${config.beanName});
 		*/
@@ -84,22 +88,6 @@ public class Create${config.className}FacadeImpl extends CommandFacadeWithSyntac
 		throw new RuntimeException(\"This method is not yet implemented\");
 	}
 	
-	public void set${config.className}DAO(${config.className}DAO ${config.beanName}DAO) {
-		this.${config.beanName}DAO = ${config.beanName}DAO;
-	}
-
-	public void setSemanticValidator(DomainValidator<${config.className}, Object> semanticValidator) {
-		this.semanticValidator = semanticValidator;
-	}
-
-	public void setCommandCopier(CommandCopier<Create${config.className}Request, Object, ${config.className}> commandCopier) {
-		this.commandCopier = commandCopier;
-	}
-
-	public void setExecutionValidator(DomainValidator<Object, Object> executionValidator) {
-		this.executionValidator = executionValidator;
-	}
-
 }
 """
 	}

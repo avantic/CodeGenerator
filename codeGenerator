@@ -2,4 +2,10 @@
 
 projectLocation="/Users/yeray/Documents/workspaces/workspace-sts/opesol"
 
-groovy --classpath "$projectLocation/target/classes" AvanticScaffolding.groovy $1
+mainClass="src/net/avantic/scaffolding/java/spring/mvc/SpringMvcScaffolding.groovy"
+
+mavenLibs="/Users/yeray/Documents/workspaces/workspace-sts/great/target/great-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib"
+
+appClasspath="$mavenLibs:/Users/yeray/Documents/workspaces/workspace-sts/great/target/classes:src"
+
+groovy --classpath $appClasspath $mainClass $1 $2

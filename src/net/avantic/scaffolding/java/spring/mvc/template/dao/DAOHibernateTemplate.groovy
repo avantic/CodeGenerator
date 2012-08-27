@@ -14,13 +14,12 @@ package ${config.basePackage}.dao.hibernate;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.springframework.util.Assert;
-
 import ${config.basePackage}.dao.${config.className}DAO;
 import ${config.basePackage}.model.${config.className};
+import org.springframework.stereotype.Component;
 
-public class ${config.className}DAOHibernate extends HibernateDaoSupport implements ${config.className}DAO {
+@Component(\"${config.beanName}DAO\")
+public class ${config.className}DAOHibernate extends AbstractDAOSupport implements ${config.className}DAO {
 
 	@Override
 	public void saveOrUpdate(${config.className} entity) {
